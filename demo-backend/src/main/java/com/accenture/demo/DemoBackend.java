@@ -24,6 +24,16 @@ public class DemoBackend {
         return answer;
     }
 
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public void add(@RequestParam(value = "word") final String word) {
+        WordGenerator.addWord(word);
+    }
+
+    @RequestMapping(value = "/clearList", method = RequestMethod.GET)
+    public void clearList() {
+        WordGenerator.clearList();
+    }
+
     @RequestMapping("/api")
     public String api() {
         String answer = "Hello ".concat(WordGenerator.generateWord());
